@@ -6,6 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Portfolio website for Brookelyn Rose, an artist and illustrator. Static single-page site — no build tools, no package manager, no frameworks. Just open `index.html` in a browser.
 
+## Deployment
+
+- **Hosted on GitHub Pages** (legacy deploy from `main` branch): https://bryan-legend.github.io/brookelyn-rose-portfolio/
+- **Repo**: https://github.com/Bryan-Legend/brookelyn-rose-portfolio
+- Push to `main` triggers automatic deployment. To force a rebuild: `gh api repos/Bryan-Legend/brookelyn-rose-portfolio/pages/builds -X POST`
+- Git identity for this repo: `Bryan-Legend` / `Bryan-Legend@users.noreply.github.com`
+
 ## Architecture
 
 - **`index.html`** — The live site. Single file with embedded CSS and vanilla JS. ~1,750 lines.
@@ -39,3 +46,4 @@ Portfolio website for Brookelyn Rose, an artist and illustrator. Static single-p
 
 - Email: brookelynlivingston@gmail.com
 - Instagram: https://www.instagram.com/artbybrookelyn/
+- Available for commission & hire — remote or local in Utah
