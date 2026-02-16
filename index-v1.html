@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brookelyn Rose — Artist &amp; Illustrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --dusty-rose: #D4A0A0;
+  --soft-pink: #F5E6E0;
+  --warm-purple: #8B6B8B;
+  --cream: #FFF8F0;
+  --charcoal: #2D2D2D;
+  --deep-rose: #B07878;
+  --light-purple: #A88BA8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--charcoal);
+  background: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--warm-purple); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--deep-rose); }
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--warm-purple);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+section { padding: 5rem 1.5rem; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 160, 160, 0.3);
+  padding: 0 1.5rem;
+  transition: box-shadow 0.3s;
+}
+
+nav.scrolled { box-shadow: 0 2px 20px rgba(139, 107, 139, 0.15); }
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  letter-spacing: 0.5px;
+}
+
+.nav-logo span { color: var(--dusty-rose); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--charcoal);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--dusty-rose);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: var(--charcoal);
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('Art/Ballerina.jpg') center center / cover no-repeat;
+  filter: brightness(0.4) saturate(0.8);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator svg {
+  width: 30px;
+  height: 30px;
+  stroke: #fff;
+  opacity: 0.7;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ===== IMAGO COMIC SECTION ===== */
+#imago { background: var(--charcoal); color: #fff; position: relative; overflow: hidden; }
+
+#imago .section-title { color: #fff; }
+#imago .section-subtitle { color: var(--dusty-rose); }
+
+.halftone-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
+}
+
+.comic-reader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.comic-page {
+  position: relative;
+  cursor: pointer;
+  border: 4px solid #fff;
+  box-shadow: 5px 5px 0 rgba(212, 160, 160, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.comic-page:hover {
+  transform: translateY(-5px) rotate(-0.5deg);
+  box-shadow: 8px 8px 0 rgba(212, 160, 160, 0.7);
+}
+
+.comic-page img { width: 100%; display: block; }
+
+.comic-page .page-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--dusty-rose);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.comic-characters {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.character-spotlight {
+  text-align: center;
+  max-width: 350px;
+  cursor: pointer;
+}
+
+.character-spotlight img {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 4px solid var(--dusty-rose);
+  margin: 0 auto 1rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.character-spotlight:hover img {
+  transform: scale(1.05);
+  border-color: var(--light-purple);
+}
+
+.character-spotlight p {
+  color: var(--dusty-rose);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  color: var(--charcoal);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 3rem auto 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 15px solid transparent;
+  border-bottom-color: #fff;
+  border-top: 0;
+}
+
+/* ===== KANDY KNIGHT ===== */
+#kandy { background: var(--soft-pink); }
+
+.kandy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.kandy-feature {
+  grid-column: 1 / -1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(139, 107, 139, 0.2);
+  text-align: center;
+  background: var(--soft-pink);
+}
+
+.kandy-feature img { max-width: 100%; width: auto; max-height: 700px; margin: 0 auto; }
+
+.kandy-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(139, 107, 139, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kandy-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(139, 107, 139, 0.25);
+}
+
+.kandy-item img { width: 100%; }
+
+.kandy-item .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(45, 45, 45, 0.8));
+  color: #fff;
+  padding: 2rem 1rem 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+
+/* ===== ILLUSTRATIONS GALLERY ===== */
+#illustrations { background: var(--cream); }
+
+.masonry {
+  columns: 3;
+  column-gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.masonry-item:hover { transform: scale(1.02); }
+
+.masonry-item img { width: 100%; display: block; }
+
+.masonry-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 60%, rgba(45, 45, 45, 0.7));
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.masonry-item:hover .overlay { opacity: 1; }
+
+.masonry-item .overlay span {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+
+/* ===== STUDIES ===== */
+#studies { background: var(--soft-pink); }
+
+.studies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.study-pair {
+  display: contents;
+}
+
+.study-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 107, 139, 0.15);
+  transition: transform 0.3s;
+}
+
+.study-card:hover { transform: scale(1.02); }
+
+.study-card img { width: 100%; display: block; }
+
+.study-card .tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--warm-purple);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.study-card .tag.result-tag {
+  background: var(--dusty-rose);
+}
+
+.study-divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dusty-rose), transparent);
+}
+
+/* ===== CHARACTER DESIGN ===== */
+#characters { background: var(--cream); }
+
+.char-subsection {
+  margin-bottom: 4rem;
+}
+
+.char-subsection h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.char-subsection .sub-desc {
+  text-align: center;
+  color: var(--warm-purple);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.progression-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.progression-step {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 107, 139, 0.15);
+  transition: transform 0.3s;
+}
+
+.progression-step:hover { transform: scale(1.03); }
+
+.progression-step img { width: 100%; display: block; }
+
+.progression-step .step-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(45, 45, 45, 0.8));
+  color: #fff;
+  padding: 2rem 0.75rem 0.75rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.two-col-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.showcase-card {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 107, 139, 0.15);
+  transition: transform 0.3s;
+}
+
+.showcase-card:hover { transform: scale(1.02); }
+
+.showcase-card img { width: 100%; display: block; }
+
+.three-col-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== CONTACT / FOOTER ===== */
+#contact {
+  background: var(--charcoal);
+  color: #fff;
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+#contact .section-title { color: #fff; }
+#contact .section-subtitle { color: var(--dusty-rose); }
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border: 2px solid var(--dusty-rose);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.contact-btn:hover {
+  background: var(--dusty-rose);
+  color: #fff;
+}
+
+.contact-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 160, 160, 0.3);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  padding: 2rem;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: default;
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  line-height: 1;
+  z-index: 2001;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  padding: 1rem;
+  z-index: 2001;
+}
+
+.lightbox-nav:hover { opacity: 1; }
+
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .masonry { columns: 2; }
+  .progression-grid { grid-template-columns: repeat(2, 1fr); }
+  .three-col-showcase { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 248, 240, 0.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1.5rem;
+    transform: translateY(-120%);
+    transition: transform 0.4s ease;
+    border-bottom: 1px solid rgba(212, 160, 160, 0.3);
+  }
+
+  .nav-links.open { transform: translateY(0); }
+
+  .hero-content h1 { font-size: 2.8rem; }
+  .hero-content p { font-size: 1rem; letter-spacing: 3px; }
+
+  .section-title { font-size: 2rem; }
+
+  .comic-reader { grid-template-columns: 1fr; }
+
+  .kandy-grid { grid-template-columns: 1fr; }
+
+  .masonry { columns: 1; }
+
+  .studies-grid { grid-template-columns: 1fr; }
+
+  .progression-grid { grid-template-columns: 1fr 1fr; }
+
+  .two-col-showcase { grid-template-columns: 1fr; }
+
+  .three-col-showcase { grid-template-columns: 1fr; }
+
+  section { padding: 3.5rem 1rem; }
+
+  .character-spotlight img { width: 180px; height: 180px; }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .progression-grid { grid-template-columns: 1fr; }
+  .nav-logo { font-size: 1.2rem; }
+}
+
+/* ===== FADE-IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Brookelyn <span>Rose</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#imago">Imago</a></li>
+      <li><a href="#kandy">Kandy Knight</a></li>
+      <li><a href="#illustrations">Illustrations</a></li>
+      <li><a href="#studies">Studies</a></li>
+      <li><a href="#characters">Characters</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Brookelyn Rose</h1>
+    <p>Artist &amp; Illustrator</p>
+  </div>
+  <div class="scroll-indicator">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="7 13 12 18 17 13"></polyline>
+      <polyline points="7 6 12 11 17 6"></polyline>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== IMAGO COMIC BOOK ===== -->
+<section id="imago">
+  <div class="halftone-bg"></div>
+  <div class="container">
+    <h2 class="section-title fade-in">Imago</h2>
+    <p class="section-subtitle fade-in">A comic book project following the journey of a small mouse with big dreams</p>
+
+    <div class="speech-bubble fade-in">
+      Every great story starts with a tiny spark of imagination.
+    </div>
+
+    <div class="comic-reader" style="margin-top: 3rem;">
+      <div class="comic-page fade-in" onclick="openLightbox('Art/Imago 1.jpg')">
+        <span class="page-num">Page 1</span>
+        <img src="Art/Imago 1.jpg" alt="Imago comic page 1" loading="lazy">
+      </div>
+      <div class="comic-page fade-in" onclick="openLightbox('Art/Imago 2.jpg')">
+        <span class="page-num">Page 2</span>
+        <img src="Art/Imago 2.jpg" alt="Imago comic page 2" loading="lazy">
+      </div>
+      <div class="comic-page fade-in" onclick="openLightbox('Art/Imago 3.jpg')">
+        <span class="page-num">Page 3</span>
+        <img src="Art/Imago 3.jpg" alt="Imago comic page 3" loading="lazy">
+      </div>
+      <div class="comic-page fade-in" onclick="openLightbox('Art/Imago 4.jpg')">
+        <span class="page-num">Page 4</span>
+        <img src="Art/Imago 4.jpg" alt="Imago comic page 4" loading="lazy">
+      </div>
+    </div>
+
+    <div class="comic-characters">
+      <div class="character-spotlight fade-in" onclick="openLightbox('Art/Imago the Mouse.jpg')">
+        <img src="Art/Imago the Mouse.jpg" alt="Imago the Mouse" loading="lazy">
+        <p>Imago the Mouse</p>
+      </div>
+      <div class="character-spotlight fade-in" onclick="openLightbox('Art/Mouse With Star.jpg')">
+        <img src="Art/Mouse With Star.jpg" alt="Mouse with Star" loading="lazy">
+        <p>Mouse with Star</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KANDY KNIGHT ===== -->
+<section id="kandy">
+  <div class="container">
+    <h2 class="section-title fade-in">Kandy Knight</h2>
+    <p class="section-subtitle fade-in">Character designs, environments, and assets for a sweet adventure</p>
+
+    <div class="kandy-grid">
+      <div class="kandy-feature fade-in" onclick="openLightbox('Art/Kandy Knight Poster.png')">
+        <img src="Art/Kandy Knight Poster.png" alt="Kandy Knight Poster" loading="lazy">
+      </div>
+      <div class="kandy-item fade-in" onclick="openLightbox('Art/Kandy Knight Character Lineup.jpg')">
+        <img src="Art/Kandy Knight Character Lineup.jpg" alt="Character Lineup" loading="lazy">
+        <div class="label">Character Lineup</div>
+      </div>
+      <div class="kandy-item fade-in" onclick="openLightbox('Art/Kandy Knight Carriage.jpg')">
+        <img src="Art/Kandy Knight Carriage.jpg" alt="Carriage Design" loading="lazy">
+        <div class="label">Carriage</div>
+      </div>
+      <div class="kandy-item fade-in" onclick="openLightbox('Art/Kandy Knight Assets.jpg')" style="grid-column: 1 / -1;">
+        <img src="Art/Kandy Knight Assets.jpg" alt="Game Assets" loading="lazy">
+        <div class="label">Assets</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ILLUSTRATIONS ===== -->
+<section id="illustrations">
+  <div class="container">
+    <h2 class="section-title fade-in">Illustrations</h2>
+    <p class="section-subtitle fade-in">A collection of personal and commissioned works</p>
+
+    <div class="masonry">
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Ballerina.jpg')">
+        <img src="Art/Ballerina.jpg" alt="Ballerina" loading="lazy">
+        <div class="overlay"><span>Ballerina</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Fat Fairy.jpg')">
+        <img src="Art/Fat Fairy.jpg" alt="Fat Fairy" loading="lazy">
+        <div class="overlay"><span>Fat Fairy</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Unicorns.jpg')">
+        <img src="Art/Unicorns.jpg" alt="Unicorns" loading="lazy">
+        <div class="overlay"><span>Unicorns</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Unicorn Sketches Colored.jpg')">
+        <img src="Art/Unicorn Sketches Colored.jpg" alt="Unicorn Sketches" loading="lazy">
+        <div class="overlay"><span>Unicorn Sketches</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Frog.jpg')">
+        <img src="Art/Frog.jpg" alt="Frog" loading="lazy">
+        <div class="overlay"><span>Frog</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Dinosaur.jpg')">
+        <img src="Art/Dinosaur.jpg" alt="Dinosaur" loading="lazy">
+        <div class="overlay"><span>Dinosaur</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Sad Mushroom.jpg')">
+        <img src="Art/Sad Mushroom.jpg" alt="Sad Mushroom" loading="lazy">
+        <div class="overlay"><span>Sad Mushroom</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Cowboy.jpg')">
+        <img src="Art/Cowboy.jpg" alt="Cowboy" loading="lazy">
+        <div class="overlay"><span>Cowboy</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Cat Connection.png')">
+        <img src="Art/Cat Connection.png" alt="Cat Connection" loading="lazy">
+        <div class="overlay"><span>Cat Connection</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Wall Scribbler.png')">
+        <img src="Art/Wall Scribbler.png" alt="Wall Scribbler" loading="lazy">
+        <div class="overlay"><span>Wall Scribbler</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Waterbrushed Girl.png')">
+        <img src="Art/Waterbrushed Girl.png" alt="Waterbrushed Girl" loading="lazy">
+        <div class="overlay"><span>Waterbrushed Girl</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Vampire Monster.jpg')">
+        <img src="Art/Vampire Monster.jpg" alt="Vampire Monster" loading="lazy">
+        <div class="overlay"><span>Vampire Monster</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Knights of the Round Nest.jpg')">
+        <img src="Art/Knights of the Round Nest.jpg" alt="Knights of the Round Nest" loading="lazy">
+        <div class="overlay"><span>Knights of the Round Nest</span></div>
+      </div>
+      <div class="masonry-item fade-in" onclick="openLightbox('Art/Animated Gnome.gif')">
+        <img src="Art/Animated Gnome.gif" alt="Animated Gnome" loading="lazy">
+        <div class="overlay"><span>Animated Gnome</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDIES ===== -->
+<section id="studies">
+  <div class="container">
+    <h2 class="section-title fade-in">Studies</h2>
+    <p class="section-subtitle fade-in">Reference studies — learning by observation and recreation</p>
+
+    <div class="studies-grid">
+      <!-- Cat -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Cat Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Cat Reference.png" alt="Cat Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Cat Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Cat Result.png" alt="Cat Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Monk -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Monk Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Monk Reference.png" alt="Monk Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Monk Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Monk Result.png" alt="Monk Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Profile -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Profile Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Profile Reference.png" alt="Profile Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Profile Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Profile Result.png" alt="Profile Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Goblin -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Goblin Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Goblin Reference.png" alt="Goblin Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Goblin Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Goblin Result.png" alt="Goblin Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Woman -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Woman Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Woman Reference.png" alt="Woman Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Woman Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Woman Result.png" alt="Woman Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Hair Model -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Hair Model Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Hair Model Reference.png" alt="Hair Model Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Hair Model Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Hair Model Result.png" alt="Hair Model Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Old Man -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Old Man Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Old Man Reference.png" alt="Old Man Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Old Man Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Old Man Result.png" alt="Old Man Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Pirate -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Pirate Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Pirate Reference.png" alt="Pirate Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Pirate Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Pirate Result.png" alt="Pirate Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Pirate 2 -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Pirate 2 Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Pirate 2 Reference.png" alt="Pirate 2 Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Pirate 2 Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Pirate 2 Result.png" alt="Pirate 2 Study - Result" loading="lazy">
+      </div>
+
+      <div class="study-divider"></div>
+
+      <!-- Vampire -->
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Vampire Reference.png')">
+        <span class="tag">Reference</span>
+        <img src="Art/Study Vampire Reference.png" alt="Vampire Study - Reference" loading="lazy">
+      </div>
+      <div class="study-card fade-in" onclick="openLightbox('Art/Study Vampire Result.png')">
+        <span class="tag result-tag">Result</span>
+        <img src="Art/Study Vampire Result.png" alt="Vampire Study - Result" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHARACTER DESIGN & PROJECTS ===== -->
+<section id="characters">
+  <div class="container">
+    <h2 class="section-title fade-in">Character Design &amp; Projects</h2>
+    <p class="section-subtitle fade-in">From sketch to final — exploring characters and worlds</p>
+
+    <!-- Arya Stark -->
+    <div class="char-subsection">
+      <h3 class="fade-in">Arya Stark</h3>
+      <p class="sub-desc fade-in">Sketch to color progression</p>
+      <div class="progression-grid">
+        <div class="progression-step fade-in" onclick="openLightbox('Art/Arya Stark Sketch.png')">
+          <img src="Art/Arya Stark Sketch.png" alt="Arya Stark - Sketch" loading="lazy">
+          <div class="step-label">Sketch</div>
+        </div>
+        <div class="progression-step fade-in" onclick="openLightbox('Art/Arya Stark Sketch 2.png')">
+          <img src="Art/Arya Stark Sketch 2.png" alt="Arya Stark - Refined Sketch" loading="lazy">
+          <div class="step-label">Refined Sketch</div>
+        </div>
+        <div class="progression-step fade-in" onclick="openLightbox('Art/Arya Stark Inkwork.jpeg')">
+          <img src="Art/Arya Stark Inkwork.jpeg" alt="Arya Stark - Inkwork" loading="lazy">
+          <div class="step-label">Inkwork</div>
+        </div>
+        <div class="progression-step fade-in" onclick="openLightbox('Art/Arya Stark Colored.jpeg')">
+          <img src="Art/Arya Stark Colored.jpeg" alt="Arya Stark - Colored" loading="lazy">
+          <div class="step-label">Colored</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rufus and Penelope -->
+    <div class="char-subsection">
+      <h3 class="fade-in">Rufus &amp; Penelope</h3>
+      <p class="sub-desc fade-in">Concept art and storyboarding</p>
+      <div class="two-col-showcase">
+        <div class="showcase-card fade-in" onclick="openLightbox('Art/Rufus and Penelope Concept.jpg')">
+          <img src="Art/Rufus and Penelope Concept.jpg" alt="Rufus and Penelope - Concept" loading="lazy">
+        </div>
+        <div class="showcase-card fade-in" onclick="openLightbox('Art/Rufus and Penelope Storyboard.jpg')">
+          <img src="Art/Rufus and Penelope Storyboard.jpg" alt="Rufus and Penelope - Storyboard" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Storyboard -->
+    <div class="char-subsection">
+      <h3 class="fade-in">Storyboard</h3>
+      <p class="sub-desc fade-in">Sequential storytelling and visual narrative</p>
+      <div class="two-col-showcase" style="grid-template-columns: 1fr;">
+        <div class="showcase-card fade-in" onclick="openLightbox('Art/Storyboard.jpg')">
+          <img src="Art/Storyboard.jpg" alt="Storyboard" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept to Model -->
+    <div class="char-subsection">
+      <h3 class="fade-in">Concept to Model</h3>
+      <p class="sub-desc fade-in">From 2D concept art to 3D model</p>
+      <div class="studies-grid" style="max-width: 900px;">
+        <div class="study-card fade-in" onclick="openLightbox('Art/Concept to Model.png')">
+          <span class="tag">Concept Art</span>
+          <img src="Art/Concept to Model.png" alt="Concept to Model - Concept Art" loading="lazy" style="object-fit: cover; object-position: right center; aspect-ratio: 1/1.2;">
+        </div>
+        <div class="study-card fade-in" onclick="openLightbox('Art/Concept to Model.png')">
+          <span class="tag result-tag">3D Model</span>
+          <img src="Art/Concept to Model.png" alt="Concept to Model - 3D Model" loading="lazy" style="object-fit: cover; object-position: left center; aspect-ratio: 1/1.2;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 5th Grader Painting -->
+    <div class="char-subsection">
+      <h3 class="fade-in">Kid's Sketch to Painting</h3>
+      <p class="sub-desc fade-in">A child's drawing reimagined as a finished painting</p>
+      <div class="studies-grid" style="max-width: 900px;">
+        <div class="study-card fade-in" onclick="openLightbox('Art/Fifth Grader Source.jpg')">
+          <span class="tag">Original Sketch</span>
+          <img src="Art/Fifth Grader Source.jpg" alt="5th Grader - Original Sketch" loading="lazy">
+        </div>
+        <div class="study-card fade-in" onclick="openLightbox('Art/5th Grader Render.jpg')">
+          <span class="tag result-tag">Painting</span>
+          <img src="Art/5th Grader Render.jpg" alt="5th Grader - Painting" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / FOOTER ===== -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title fade-in">Get In Touch</h2>
+    <p class="section-subtitle fade-in">Interested in working together? I'd love to hear from you.</p>
+
+    <div class="contact-links fade-in">
+      <a href="mailto:brookelynlivingston@gmail.com" class="contact-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <path d="M22 4L12 13L2 4"></path>
+        </svg>
+        brookelynlivingston@gmail.com
+      </a>
+      <a href="https://www.instagram.com/artbybrookelyn/" target="_blank" rel="noopener" class="contact-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+          <circle cx="12" cy="12" r="5"></circle>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        </svg>
+        @artbybrookelyn
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Brookelyn Rose. All rights reserved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+  <img id="lightboxImg" src="" alt="Full size artwork">
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function() {
+  // --- Navigation ---
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const navbar = document.getElementById('navbar');
+  const allNavLinks = navLinks.querySelectorAll('a');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  allNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // --- Lightbox ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const allClickableImages = [];
+  let currentIndex = -1;
+
+  // Collect all clickable image sources
+  document.querySelectorAll('[onclick^="openLightbox"]').forEach(el => {
+    const match = el.getAttribute('onclick').match(/openLightbox\('(.+?)'\)/);
+    if (match) allClickableImages.push(match[1]);
+  });
+
+  window.openLightbox = function(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    currentIndex = allClickableImages.indexOf(src);
+  };
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  function navigate(dir) {
+    if (allClickableImages.length === 0) return;
+    currentIndex = (currentIndex + dir + allClickableImages.length) % allClickableImages.length;
+    lightboxImg.src = allClickableImages[currentIndex];
+  }
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  // --- Fade-in on scroll ---
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  fadeEls.forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>
